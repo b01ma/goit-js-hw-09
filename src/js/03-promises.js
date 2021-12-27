@@ -1,3 +1,5 @@
+import Notiflix from 'notiflix';
+
 const refs = {
   form: document.querySelector('.form'),
   button: document.querySelector('button[type="submit"]'),
@@ -24,29 +26,31 @@ function onClick(event) {
 
   event.preventDefault();
   console.log("Погнали!");
-  console.log(formData);
+  // console.log(formData);
 
   let position = 0;
   const amount = formData.amount;
   let delay = Number(formData.delay);
   const step = Number(formData.step);
 
-  console.log(amount)
+  // console.log(amount)
 
   for (let i = 1; i <= amount; i += 1) {
 
     position = i;
     delay += step;
 
-    console.log(delay);
-    console.log(step);
+    // console.log(delay);
+    // console.log(step);
 
     createPromise(position, delay)
   .then(({ position, delay }) => {
     console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
+    Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
   })
   .catch(({ position, delay }) => {
     console.log(`❌ Rejected promise ${position} in ${delay}ms`);
+    Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
   });
 
   };
