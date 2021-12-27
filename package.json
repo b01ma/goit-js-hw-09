@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@vimeo/player": "^2.16.2",
+    "flatpickr": "^4.6.9",
     "simplelightbox": "^2.10.1"
   }
 }
