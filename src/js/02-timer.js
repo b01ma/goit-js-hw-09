@@ -53,6 +53,12 @@ function onClickStart() {
     console.log(convertMs(timeToCountdown));
 
     intervalID = setInterval(() => {
+
+      if (timeToCountdown < 1000) {
+        clearInterval(intervalID);
+        return;
+      }
+
         countDown(timeToCountdown-1000);
         timeToCountdown -= 1000;
     }, 1000);
